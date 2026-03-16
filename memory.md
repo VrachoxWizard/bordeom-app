@@ -1,43 +1,100 @@
 # memory.md
 
-This file is a running memory log for the Antigravity workspace.
-Append short, useful entries after meaningful work so future sessions keep context.
+This file is the high-signal project memory for the Antigravity workspace.
+It should capture the current state of Boredom Gym, not a long historical transcript.
 
-## Change Log
+## Current State Snapshot
 
-- [2026-03-16] Tailored the workspace from generic Antigravity starter templates into a project-specific setup for Boredom Gym. Rewrote `AGENTS.md`, `RULES.md`, `context.md`, `specs.md`, `README.md`, `ANTIGRAVITY_PROMPTS.md`, and added reusable workflow files.
-- [2026-03-16] Established the v1 direction as a calm, local-first React app focused on stillness sessions, urge tracking, daily reflection, and lightweight analytics.
-- [2026-03-16] Scaffolding complete. Implemented App Shell and Navigation. Switched to Vanilla CSS for maximum control over the "Quiet" aesthetic and to resolve experimental Vite/Tailwind v4 resolution issues.
-- [2026-03-16] Stillness Session v1 implemented. Features persistent local storage (Dexie), Zustand session management, and a three-stage UI flow (Setup, Active, Completion).
-- [2026-03-16] Urge Tracker v1 implemented. Low-friction progressive logging flow, Dexie persistence for carvings, and real-time recent history display.
-- [2026-03-16] Core Feature Batch complete: Daily Reflection (End-of-day check-in), Calm Insights (Activity grid & pattern summary), and Settings (Experience preferences + JSON Export/Import).
-- [2026-03-16] Data Layer Refactor: Migrated all lists/aggregates to reactive Dexie `useLiveQuery` for synchronized UI updates.
-- [2026-03-16] Product Polish & RC Batch: Implemented Home v2 (Active Overview), Full-Screen Focus Mode, PWA support, and accessibility overhaul. Established automated testing with Vitest.
-- [2026-03-16] Portfolio & Release: Finalized brand identity (Logo, Refined Nav), added About/Philosophy section, implemented Showcase Mode (Demo Data), and overhauled README for high-quality portfolio presentation.
+Boredom Gym is a shipped v1 local-first web app focused on stillness training, urge awareness, and daily reflection.
 
-## Current Priorities
+The app is already feature-complete enough for portfolio presentation and public GitHub hosting.
 
-- [x] All v1 core features and polish passes complete.
-- [x] Portfolio-ready documentation and demo logic implemented.
-- [ ] Final review and deployment to production.
+## What Exists
 
-## Known Issues / Open Questions
+### Core product flows
+- Stillness Session
+- Urge Tracker
+- Daily Reflection
+- Calm Insights
+- Settings / Local Data Controls
+- About / Philosophy section
+- Showcase / Sample Data mode
 
-- [x] Local-first strategy confirmed via Dexie/IndexedDB.
-- [x] Visual design tokens finalized (Zinc Scale, Playful Typographic Layout).
-- [x] PWA fully functional.
+### Product polish
+- Home dashboard with daily overview
+- Focus / immersive mode for active sessions
+- Quiet premium visual styling
+- Responsive layout improvements
+- Accessibility and keyboard pass
+- PWA installability
+- Test/build verification
 
-## Implementation Notes
+## Technical Decisions That Matter
 
-- The first build should prioritize shippable clarity over perfect abstraction.
-- Stillness Session is the anchor feature and should define the tone for the rest of the app.
-- Analytics should feel reflective, not competitive.
-- Empty states and copy matter a lot for product identity.
+- Local-first persistence is a core product principle.
+- Dexie / IndexedDB is the main data layer.
+- Zustand is used where cross-screen session state benefits from it.
+- The codebase uses a feature-oriented frontend structure.
+- The app should remain simple, private, and non-gamified.
+- The repo should present the project as a finished v1, not a rough prototype.
+
+## Product Identity Rules
+
+Always preserve these traits:
+
+- calm
+- minimal
+- premium
+- editorial
+- non-preachy
+- non-gamified
+- local-first
+- emotionally mature
+
+Avoid turning the app into:
+- a generic productivity dashboard
+- a social habit app
+- a dopamine-maximizing self-improvement product
+- a backend-heavy system
+
+## Root-Level Priorities
+
+When improving the project, prioritize:
+
+1. metadata and naming consistency
+2. repo/documentation quality
+3. PWA correctness
+4. small visual cleanup
+5. truthful README and root docs
+6. keeping scope frozen unless a change is clearly worthwhile
+
+## Important Repo-Level Notes
+
+- The public repo name currently contains a typo: `bordeom-app`.
+- The shipped product name should consistently be **Boredom Gym**.
+- Root docs should describe the current shipped state, not just MVP planning.
+- README should remain concise, polished, and truthful.
+- If package/repo metadata still look scaffold-like, update them before expanding the product further.
+
+## Recommended Working Style
+
+- Do not add features by default.
+- Prefer focused cleanup over expansion.
+- Preserve the strongest parts of the product:
+  - stillness session flow
+  - local-first privacy
+  - calm visual identity
+  - low-friction urge logging
+- Treat the app as a finished v1 unless a bug or high-value improvement appears.
 
 ## Future Ideas
 
-- Session presets based on user mood or energy
-- Quiet onboarding that adapts to the user's current overstimulation level
-- Weekly reflection summaries generated locally from tracked patterns
-- Data export/import for portability without accounts
-- A dedicated full-screen "Silence Mode" with ultra-minimal UI
+Only consider later, not now:
+
+- richer weekly summaries
+- more refined trend views
+- optional session presets
+- deployment polish
+- small screenshot/demo workflow improvements
+
+These are optional and should never undermine the current simplicity.

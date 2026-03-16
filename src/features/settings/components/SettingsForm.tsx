@@ -6,7 +6,7 @@ export default function SettingsForm() {
 
   if (!settings) return null;
 
-  const updateSetting = async (key: string, value: any) => {
+  const updateSetting = async (key: string, value: string | number | boolean) => {
     await db.settings.put({ ...settings, [key]: value });
   };
 

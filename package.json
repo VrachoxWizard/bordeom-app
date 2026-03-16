@@ -1,15 +1,32 @@
 {
-  "name": "bordeom-app",
+  "name": "boredom-gym",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "A local-first stillness training app for urge awareness, reflection, and calm digital habits.",
   "type": "module",
+  "author": "VrachoxWizard",
+  "license": "UNLICENSED",
+  "keywords": [
+    "react",
+    "typescript",
+    "vite",
+    "pwa",
+    "local-first",
+    "dexie",
+    "zustand",
+    "framer-motion",
+    "wellbeing",
+    "calm-technology"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "test": "vitest run",
+    "test:watch": "vitest",
     "test:ui": "vitest --ui",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "check": "npm run lint && npm run test && npm run build"
   },
   "dependencies": {
     "dexie": "^4.3.0",

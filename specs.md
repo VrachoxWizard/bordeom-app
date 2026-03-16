@@ -1,292 +1,312 @@
 # specs.md
 
-This file contains the active product specs for Boredom Gym.
-Each feature should be implemented against a clear goal, constraints, and acceptance criteria.
+This file contains the current shipped-v1 product spec for Boredom Gym.
+It should describe what the project is now, what quality bar it should maintain, and what future changes are allowed.
 
 ---
 
-## Feature: App Shell and Navigation
+# Product: Boredom Gym
 
-### Goal
+## Summary
 
-Create the foundational application shell for Boredom Gym so the app feels coherent from the beginning.
-The shell should establish calm visual identity, route structure, global layout, and basic navigation without becoming visually heavy.
+Boredom Gym is a local-first stillness training app designed to help users:
 
-### Requirements
+- practice quiet timed sessions
+- notice and log compulsive urges
+- reflect on daily mental state
+- review patterns without pressure
+- keep all personal data on-device
 
-#### Functional
+The product is intentionally quiet, private, and non-gamified.
 
-- Create route-level pages for:
-  - Home
-  - Session
-  - Urge
-  - Reflection
-  - Insights
-  - Settings
-- Add a simple navigation pattern that works on desktop and mobile
-- Create a shared layout wrapper
-- Add placeholder sections where features are not implemented yet
+## v1 Product Goals
 
-#### Non-functional
+The shipped v1 should successfully demonstrate:
 
-- Fast initial load
-- Responsive layout
-- Accessible navigation and focus states
-- Calm, minimal visual hierarchy
-
-### Constraints
-
-- Use React Router
-- Do not introduce backend dependencies
-- Do not overbuild a design system before real usage appears
-- Avoid dashboard clutter
-
-### Acceptance Criteria
-
-- [ ] All MVP routes exist and render correctly
-- [ ] Navigation works on desktop and mobile
-- [ ] Layout establishes the intended calm visual direction
-- [ ] Placeholder pages are consistent and non-broken
+1. a strong non-generic product concept
+2. calm editorial UX
+3. local-first data architecture
+4. polished frontend implementation
+5. meaningful daily-use core flows
+6. portfolio-quality presentation and repo quality
 
 ---
 
-## Feature: Stillness Session
+# Feature: Stillness Session
 
-### Goal
+## Goal
 
-Allow the user to run a quiet timed stillness session with a minimal interface and complete a short reflection afterward.
-This feature is the emotional core of the product and should feel focused, stable, and uncluttered.
+Provide a calm, reliable stillness practice flow that acts as the emotional anchor of the product.
 
-### Requirements
+## Functional Requirements
 
-#### Functional
-
-- Let the user choose a duration preset
-  - 2 min
-  - 5 min
-  - 10 min
-  - 20 min
-- Allow session states:
+- User can choose a preset duration
+- User can start a session from the Session route
+- Timer supports:
   - idle
   - running
   - paused
   - completed
-  - abandoned
-- Show remaining time clearly
-- Allow pause/resume
-- Allow ending the session early
-- After completion, show a short completion form:
-  - perceived difficulty
-  - urge intensity during session
+  - cancelled / ended early
+- Active session UI shows:
+  - large countdown
+  - calm prompt text
+  - pause / resume / cancel actions
+- On completion, user can record:
+  - mood / state
+  - urge intensity or urge count
   - optional note
-- Save session results locally
+- Session data is stored locally
 
-#### Non-functional
+## Quality Requirements
 
-- Timer behavior must be reliable and predictable
-- UI should remain calm and distraction-free
-- The session screen should work well on mobile and desktop
+- timer behavior must be reliable
+- UI must remain uncluttered
+- immersive/focus mode should feel premium, not flashy
+- mobile and desktop readability must stay strong
 
-### Constraints
+## Acceptance Criteria
 
-- Do not add sound effects in v1
-- Do not add unnecessary motivational overlays
-- Keep timer logic separate from UI
-- Keep storage logic separate from UI
-
-### Acceptance Criteria
-
-- [ ] User can start a session from a preset duration
-- [ ] User can pause and resume without timer corruption
-- [ ] User can end or complete a session
-- [ ] Completion form appears after a finished session
-- [ ] Session data is saved and visible to insights logic
+- [x] Session can be started from preset durations
+- [x] Pause/resume works without timer corruption
+- [x] Completion flow is shown after a finished session
+- [x] Session data persists locally
+- [x] Session supports a focused premium experience
 
 ---
 
-## Feature: Urge Tracker
+# Feature: Urge Tracker
 
-### Goal
+## Goal
 
-Allow the user to quickly log moments of craving, avoidance, or overstimulation so patterns become visible over time.
-This flow should be extremely fast and non-judgmental.
+Allow the user to quickly record urges for stimulation or avoidance with minimal friction.
 
-### Requirements
+## Functional Requirements
 
-#### Functional
-
-- Provide quick urge categories such as:
-  - social media
-  - video / YouTube
-  - scrolling
-  - food/snacking
-  - escape/avoidance
-  - custom
-- Auto-store timestamp
-- Let user optionally record:
+- User can log an urge quickly
+- Urge record includes:
+  - timestamp
+  - urge type
   - intensity
   - trigger
-  - short note
-- Save entries locally
+  - optional short note
+- Recent urge history is visible
+- Data persists locally
 
-#### Non-functional
+## Quality Requirements
 
-- Flow should be completable in under 20 seconds
-- The screen should feel lightweight, not form-heavy
+- flow should be completable very quickly
+- language should remain non-judgmental
+- UI should feel light, not form-heavy
 
-### Constraints
+## Acceptance Criteria
 
-- No giant form
-- No analytics in the logging screen itself
-- Do not shame the user through language or color choices
-
-### Acceptance Criteria
-
-- [ ] User can create an urge entry in a very short flow
-- [ ] Timestamp is stored automatically
-- [ ] Category and optional metadata are persisted locally
-- [ ] Recent entries can be read by insights selectors
+- [x] User can log an urge in a short flow
+- [x] Timestamp is stored automatically
+- [x] Optional metadata is persisted
+- [x] Recent entries are visible and readable
 
 ---
 
-## Feature: Daily Reflection
+# Feature: Daily Reflection
 
-### Goal
+## Goal
 
-Create a compact end-of-day reflection flow that helps the user notice how they related to boredom, focus, and urges.
-This should feel like a gentle check-in, not a questionnaire marathon.
+Offer a short end-of-day check-in that helps the user notice restlessness, presence, and avoidance patterns.
 
-### Requirements
+## Functional Requirements
 
-#### Functional
+- One reflection per day
+- Existing reflection for the day can be updated
+- Reflection captures structured emotional state
+- Optional note field
+- Reflection data persists locally
 
-- Include 3-5 structured prompts
-- Include optional free-text note
-- Allow one reflection per day, editable if needed
-- Save reflections locally
+## Quality Requirements
 
-Suggested prompts:
+- should feel calm and emotionally safe
+- should not feel like a long questionnaire
+- should connect naturally to session and urge behavior
 
-- How present did you feel today?
-- How strong was the urge to escape boredom?
-- Did quiet feel easier, harder, or the same?
-- What triggered restlessness most today?
+## Acceptance Criteria
 
-#### Non-functional
-
-- Should be finishable in under 3 minutes
-- Should look calm and readable
-
-### Constraints
-
-- Do not create a long journaling system yet
-- Keep data shape simple
-- Avoid generic self-help language
-
-### Acceptance Criteria
-
-- [ ] User can save a daily reflection
-- [ ] Existing reflection for the same day can be edited
-- [ ] Reflection data is persisted locally
-- [ ] Reflection summaries can later be surfaced in insights
+- [x] User can save a daily reflection
+- [x] Reflection for the same day can be edited
+- [x] Reflection persists locally
+- [x] Reflection contributes to insights/context views
 
 ---
 
-## Feature: Calm Insights
+# Feature: Calm Insights
 
-### Goal
+## Goal
 
-Present useful patterns from sessions, urges, and reflections in a way that supports awareness instead of pressure.
-The insights page should help the user notice rhythms, not feel judged.
+Show meaningful local summaries without turning the app into a stressful metrics dashboard.
 
-### Requirements
+## Functional Requirements
 
-#### Functional
-
-- Show at least these summary metrics:
-  - total quiet minutes
+- Display useful high-level summaries such as:
+  - total stillness minutes
   - sessions completed
   - urges logged
-  - last 7 days consistency
-- Show at least two simple visualizations:
-  - urge categories
-  - sessions over time or quiet minutes trend
-- Show one reflective summary block using derived local data
+  - reflection activity
+- Provide a recent activity or recent-days view
+- Show a small number of derived pattern summaries
+- Handle empty/low-data states gracefully
 
-#### Non-functional
+## Quality Requirements
 
-- Charts must remain simple and readable
-- The page should not look like a performance dashboard
-- Empty states must be graceful and motivating
+- insights must remain readable and calm
+- charts/visuals should support awareness, not competition
+- the page should avoid clutter and KPI overload
 
-### Constraints
+## Acceptance Criteria
 
-- Use lightweight charting only where it adds clarity
-- Avoid overloading one screen with too many widgets
-- Derivations should come from pure selector functions when possible
-
-### Acceptance Criteria
-
-- [ ] Summary metrics render from stored data
-- [ ] At least two useful visualizations render correctly
-- [ ] Empty state is clear when no data exists yet
-- [ ] The screen preserves the calm product tone
+- [x] Summaries render from local data
+- [x] At least one useful recent-activity view exists
+- [x] Pattern summaries are present
+- [x] Empty state is graceful and on-brand
 
 ---
 
-## Feature: Settings and Local Data Controls
+# Feature: Settings & Local Data Controls
 
-### Goal
+## Goal
 
-Provide basic preferences and safe local data controls without turning the product into a settings-heavy app.
+Give the user meaningful control over preferences and on-device data without bloating the product.
 
-### Requirements
+## Functional Requirements
 
-#### Functional
+- support lightweight local preferences
+- support export/import of local data
+- support clear-all with confirmation
+- support showcase/sample data loading
+- communicate local-first behavior clearly
 
-- Allow the user to:
-  - choose preferred default session lengths
-  - toggle reduced motion preferences if implemented locally
-  - clear all local data with confirmation
-- Reserve space for future export/import functionality
+## Quality Requirements
 
-#### Non-functional
+- destructive actions must be understandable
+- import/export should feel safe and intentional
+- settings should remain focused and compact
 
-- Settings should remain short and understandable
-- Destructive actions must be clearly confirmed
+## Acceptance Criteria
 
-### Constraints
-
-- No accounts
-- No cloud sync
-- Keep the surface area intentionally small
-
-### Acceptance Criteria
-
-- [ ] User can change basic preferences
-- [ ] Preferences persist locally
-- [ ] User can clear local data safely with confirmation
-- [ ] Layout remains clean and low-friction
+- [x] Local preferences persist
+- [x] Export/import is available
+- [x] Clear-all confirmation exists
+- [x] Showcase/sample data flow exists
 
 ---
 
-## Default Prompt for Antigravity
+# Feature: Home Dashboard
 
-Use this when starting work on any feature:
+## Goal
 
-Act as a senior product-minded full-stack frontend engineer.
+Provide a soft landing page that helps the user understand what to do today.
 
-1. Read `README.md`, `RULES.md`, `context.md`, `memory.md`, and the relevant section in `specs.md`.
-2. Inspect the current codebase before proposing changes.
-3. Create an Implementation Plan Artifact with:
-   - feature summary
-   - user outcome
-   - exact files to create or modify
-   - state/data changes
-   - edge cases
-   - testing approach
-4. Wait for approval if the task spans multiple files or affects architecture.
-5. After approval, implement the feature in small, clean steps.
-6. Keep code aligned with the calm tone and local-first architecture.
-7. Add or update tests for meaningful logic.
-8. Update `memory.md` with a short summary of the work.
+## Functional Requirements
+
+- show a simple today overview
+- expose quick actions into core flows
+- show a small recent activity summary
+- explain the product clearly for first-time users
+
+## Quality Requirements
+
+- should feel like a calm command center
+- should not feel like a corporate dashboard
+- should work well with both empty and populated data states
+
+## Acceptance Criteria
+
+- [x] Quick actions exist
+- [x] Today summary exists
+- [x] Recent activity exists
+- [x] Empty state remains intentional
+
+---
+
+# Feature: About / Philosophy
+
+## Goal
+
+Explain the product’s purpose and perspective in a concise, thoughtful way.
+
+## Functional Requirements
+
+- communicate why the app exists
+- explain stillness / urge awareness concept briefly
+- explain local-first privacy clearly
+- maintain an emotionally mature tone
+
+## Acceptance Criteria
+
+- [x] About / Philosophy content exists
+- [x] Tone is calm and non-preachy
+- [x] Privacy/local-first intent is visible
+
+---
+
+# Feature: Installability / PWA
+
+## Goal
+
+Make the app feel like a personal tool rather than a disposable web page.
+
+## Functional Requirements
+
+- installable PWA support
+- coherent manifest/app identity
+- usable offline shell appropriate for local-first behavior
+
+## Acceptance Criteria
+
+- [x] App is installable
+- [x] Manifest/app identity is configured
+- [x] Offline-oriented behavior exists for core shell
+
+---
+
+# Non-Goals
+
+The following are explicitly out of scope unless intentionally revisited:
+
+- authentication
+- cloud sync
+- social/community features
+- achievements/badges
+- aggressive gamification
+- AI coaching features
+- backend database
+- enterprise-style architecture
+- notifications as a core mechanic
+
+---
+
+# Design Constraints
+
+All future changes must preserve:
+
+- calm tone
+- restrained visual language
+- accessibility
+- keyboard friendliness
+- local-first privacy
+- simple information architecture
+- honest, non-hype copy
+
+---
+
+# Change Policy
+
+Future work should default to:
+
+- bug fixes
+- metadata cleanup
+- documentation quality
+- small polish improvements
+- PWA correctness
+- repo presentation improvements
+
+Do not expand scope casually.
+Treat the product as a finished v1 unless there is a strong reason to change it.

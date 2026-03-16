@@ -1,60 +1,131 @@
 # Boredom Gym
 
-**Train your capacity for stillness.**
+A calm, local-first stillness training app for urge awareness, reflection, and quieter digital habits.
 
-Boredom Gym is a calm, local-first web application designed to help you regain agency over your attention. In an era of infinite stimulation, boredom has become an endangered state. This app provides the environment and tools to practice "doing nothing," notice compulsive urges, and build mental resilience.
+Boredom Gym is a premium-feeling personal web app built to help users reduce compulsive stimulation, sit with boredom more comfortably, and reflect on their relationship with stillness. It is intentionally private, local-first, and non-gamified.
 
-## 🧘 Why It Exists
+## Why it exists
 
-Compulsive screen-checking and "stimulation snacking" are often physiological responses to minor discomfort. By avoiding boredom, we lose the ability to focus deeply. Boredom Gym treats stillness as a muscle—one that requires intentional resistance training.
+Most digital products are designed to maximize engagement, novelty, and compulsive checking. Boredom Gym explores the opposite direction.
 
-## ✨ Core Features
+Instead of chasing attention, it helps the user:
+- practice stillness through timed sessions
+- notice urges without reacting automatically
+- reflect on patterns of restlessness
+- review progress without turning it into a stressful dashboard
 
-- **Stillness Sessions**: High-immersion, timed sessions to practice presence without external input.
-- **Urge Tracker**: A low-friction way to log the impulsive itch for stimulation (phone, news, social media).
-- **Daily Reflection**: End-of-day check-ins to map your mental state and identify patterns of restlessness.
-- **Calm Insights**: Non-gamified data visualization to understand your progress over time.
-- **PWA Capabilities**: Fully installable as a standalone app for an uninterrupted training environment.
-- **Local-First & Private**: No accounts, no cloud, no tracking. Your data never leaves your device.
+## Core features
 
-## 🛠️ Tech Stack
+- **Stillness Sessions**  
+  Guided timed sessions with a focused, minimal interface and an immersive mode.
 
-- **Framework**: React 19 + Vite
-- **Language**: TypeScript
-- **State**: Zustand
-- **Database**: Dexie.js (IndexedDB)
-- **Animation**: Framer Motion
-- **Testing**: Vitest + React Testing Library
-- **Styling**: Tailwind CSS (Minimal & Accessible)
+- **Urge Tracker**  
+  A fast way to log impulses for stimulation such as phone use, social media, random browsing, or avoidance.
 
-## 🏗️ Architecture
+- **Daily Reflection**  
+  A structured daily check-in for presence, restlessness, difficulty, and short notes.
 
-The project follows a **Feature-Based Architecture** to keep concerns separated and maintainable:
+- **Calm Insights**  
+  Lightweight, non-gamified summaries built from local data.
 
-- `src/features/*`: Encapsulated logic for Session, Urge, Reflection, and Insights.
-- `src/lib/db.ts`: Central Dexie database configuration.
-- `src/app/*`: Global layout, routing, and PWA configuration.
-- `src/components/ui/*`: Shared minimal component library.
+- **Settings & Local Data Controls**  
+  Export, import, reset, reduced motion preferences, and showcase/sample data mode.
 
-## 🚀 Running Locally
+- **Installable PWA**  
+  Works like a private personal utility and remains usable offline.
 
-1. **Clone the repo**
-2. **Install dependencies**: `npm install`
-3. **Start development server**: `npm run dev`
-4. **Run tests**: `npm run test`
-5. **Build for production**: `npm run build`
+## Local-first privacy
 
-## 🎨 Design Philosophy
+Boredom Gym stores data locally on the device using IndexedDB via Dexie.
 
-- **Quiet**: No notifications, no badges, no "streaks" that induce guilt.
-- **Editorial**: High-quality typography and generous negative space.
-- **Honest**: Clear indicators of data locality and personal autonomy.
-- **Accessible**: High contrast, semantic HTML, and full keyboard navigability.
+There are:
+- no accounts
+- no cloud sync
+- no analytics tracking
+- no remote database for personal entries
 
-## 📂 Showcase Implementation
+Your data stays with you.
 
-For reviewers and portfolio visitors, I've implemented a **Showcase Mode** in Settings that allows you to inject realistic sample data to immediately see the app's history and insights.
+## Tech stack
 
----
+- **React 19**
+- **TypeScript**
+- **Vite**
+- **Tailwind CSS v4**
+- **Custom CSS tokens and utility styling**
+- **Zustand**
+- **Dexie + IndexedDB**
+- **Framer Motion**
+- **Recharts**
+- **Vitest + React Testing Library**
+- **vite-plugin-pwa**
 
-*Built with intention by [Your Name/Handle]*
+## Architecture
+
+The project uses a feature-oriented structure:
+
+- `src/app` — routing, layout, app wiring
+- `src/pages` — route-level screens
+- `src/features/session` — stillness session flow
+- `src/features/urge` — urge logging
+- `src/features/reflection` — daily reflection
+- `src/features/insights` — derived summaries and analytics UI
+- `src/features/settings` — preferences, import/export, demo data
+- `src/components/ui` — shared UI primitives
+- `src/lib` — persistence, selectors, data helpers, utilities
+
+## Running locally
+
+```bash
+npm install
+npm run dev
+```
+
+### Available scripts
+- `npm run dev`
+- `npm run build`
+- `npm run preview`
+- `npm run lint`
+- `npm run test`
+- `npm run check`
+
+## Showcase mode
+
+For demos and screenshots, the app includes a sample data mode so the interface can be reviewed without manually creating entries first.
+
+## Design principles
+
+Boredom Gym is built around a small set of product principles:
+- **Quiet over noisy**
+- **Editorial over dashboard-heavy**
+- **Reflection over performance theatre**
+- **Local ownership over account complexity**
+- **Calm interaction over dopamine bait**
+
+## Status
+
+Version 1.0 focuses on a polished local-first MVP:
+- stillness sessions
+- urge tracking
+- daily reflection
+- calm insights
+- installable PWA support
+- accessibility and keyboard support
+- sample/demo data for showcase
+
+## Future ideas
+
+- softer weekly summaries
+- richer trend views without losing calmness
+- improved screenshot/demo workflow
+- optional session presets
+- more refined offline/app-shell polish
+
+## License
+
+Currently shared as a public portfolio project.
+
+If you want this repo to be open-source, add a real license file such as MIT.
+If not, keep it unlicensed and marked as UNLICENSED in `package.json`.
+
+Built by VrachoxWizard.

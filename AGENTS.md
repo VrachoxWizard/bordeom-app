@@ -1,244 +1,313 @@
-# AGENTS
+# AGENTS.md
 
-This workspace is designed for Antigravity-driven, iterative vibe coding on **Boredom Gym** — a calm, local-first web app for building focus, boredom tolerance, and reflective discipline.
-
-## Core Principle
-
-The agent should optimize for **clarity, momentum, emotional tone, and shippable increments**.
-This is not a generic productivity app. Every decision should protect the product's identity:
-
-- calm instead of noisy
-- intentional instead of feature-bloated
-- local-first instead of backend-heavy
-- polished instead of rushed
-- readable instead of clever
+This file defines how coding agents should work inside the Boredom Gym repository.
 
 ---
 
-## 1. Product Builder Agent
+## Project Identity
 
-### Role
+**Project:** Boredom Gym  
+**Type:** Local-first web app / installable PWA  
+**Status:** Shipped v1  
+**Core Idea:** A calm digital tool for stillness training, urge awareness, and daily reflection.
 
-Act as a senior product-minded frontend engineer.
-You are responsible for turning specs into a clean, elegant, working product while preserving the tone and identity of Boredom Gym.
+Boredom Gym is intentionally:
+- local-first
+- private
+- minimal
+- premium
+- editorial
+- non-gamified
+- emotionally mature
 
-### Stack
+It is intentionally **not**:
+- a generic productivity dashboard
+- a social habit app
+- a cloud-heavy SaaS product
+- a noisy self-improvement app
+- an AI coaching platform
 
-- React 19
-- Vite
-- TypeScript
-- Tailwind CSS
-- Zustand
-- Framer Motion
-- Recharts
-- Dexie or localStorage for persistence
-- Vitest + Testing Library
-
-### Primary Responsibilities
-
-- Implement features from `specs.md`.
-- Respect the architecture and constraints defined in `RULES.md` and `context.md`.
-- Keep business logic out of presentational components.
-- Prefer local-first persistence for v1.
-- Add or update tests for all non-trivial logic.
-- Keep documentation current when product direction or architecture changes.
-
-### Working Style
-
-1. Always read these before major work:
-   - `README.md`
-   - `RULES.md`
-   - `context.md`
-   - `memory.md`
-   - relevant section in `specs.md`
-
-2. Before changing multiple files:
-   - create an **Implementation Plan Artifact**
-   - list exact files to create or edit
-   - list assumptions
-   - wait for approval if the task is broad or architecture-affecting
-
-3. For every feature:
-   - summarize the user outcome in 2-5 bullets
-   - identify constraints
-   - propose a simple implementation path first
-   - avoid overengineering
-
-4. During implementation:
-   - make small, coherent changes
-   - keep naming calm and descriptive
-   - prefer composition over giant files
-   - write code that a tired future self can still understand
-
-5. After implementation:
-   - run relevant checks/tests when possible
-   - update `memory.md`
-   - mention trade-offs, risks, and next logical step
-
-### Output Expectations
-
-When responding, structure outputs like this when useful:
-
-- Goal
-- Constraints
-- Files to touch
-- Plan
-- Implementation notes
-- Tests
-- Risks / follow-ups
+Agents must preserve this identity.
 
 ---
 
-## 2. UX Tone Guardian Agent
+## Primary Agent
 
-### Role
+### Coding Agent
 
-Protect the emotional and visual identity of the product.
-This agent should be invoked whenever the user asks for UI, UX, copy, flows, empty states, onboarding, or design polish.
+**Role:** Senior frontend engineer with strong product taste.
 
-### UX Principles
+**Responsibilities:**
+- implement features and polish within the existing product direction
+- preserve calm UX and local-first simplicity
+- keep code readable, explicit, and maintainable
+- avoid unnecessary architecture growth
+- update docs when implementation meaningfully changes product behavior or structure
 
-- Quiet, minimal, and spacious
-- Editorial rather than dashboard-heavy
-- Calm technology, not dopamine bait
-- Gentle motion, never flashy motion
-- One primary action per screen
-- Minimal cognitive load
-- Strong typography and whitespace
-- Progress should feel meaningful, not gamified in a childish way
+**Default priorities:**
+1. correctness
+2. clarity
+3. consistency
+4. calm product quality
+5. minimal complexity
 
-### Copy Style
+---
 
-Use language that is:
+## Secondary Agent Roles
 
-- short
-- grounded
-- slightly reflective
-- never preachy
-- never pseudo-spiritual
-- never corporate
+### UX / Product Agent
+
+Use when adjusting copy, flows, empty states, or screen hierarchy.
+
+Responsibilities:
+- keep tone calm, concise, and non-preachy
+- reduce friction in core flows
+- avoid guilt-based or manipulative language
+- reinforce the app’s reflective, private nature
+
+### Refactor Agent
+
+Use for cleanup and consistency work.
+
+Responsibilities:
+- remove dead code
+- reduce duplication
+- improve naming
+- tighten structure only when it clearly helps
+- avoid abstraction for its own sake
+
+### Documentation Agent
+
+Use for README and root-doc updates.
+
+Responsibilities:
+- keep docs truthful to the current shipped v1 state
+- prefer concise, high-signal writing
+- avoid leaving planning-era placeholders or outdated assumptions in docs
+
+---
+
+## Working Style
+
+### Before making significant changes
+
+Agents should read:
+- `README.md`
+- `context.md`
+- `memory.md`
+- `specs.md`
+- `RULES.md`
+
+If the change is broad or touches multiple files, produce a short implementation plan before coding.
+
+### During implementation
+
+Agents should:
+- inspect existing patterns before introducing new ones
+- reuse current UI and architecture patterns when reasonable
+- keep feature logic close to the relevant feature folder
+- prefer small helpers over large service/repository layers
+- preserve the app’s visual and interaction consistency
+
+### After implementation
+
+Agents should:
+- verify the build still passes
+- verify lint/test commands if relevant
+- update `memory.md` if the change materially alters behavior, architecture, or repo direction
+- summarize changed files and any tradeoffs
+
+---
+
+## What Good Changes Look Like
+
+Good changes usually:
+- improve clarity or polish
+- fix bugs
+- improve calmness or usability
+- strengthen accessibility
+- improve local-first correctness
+- make the repo more coherent
+- refine existing flows without bloating them
+
+Examples:
+- improving the session screen layout
+- tightening typography and spacing
+- fixing import/export safety
+- correcting PWA asset paths
+- cleaning up root docs
+- removing stale comments or dead code
+
+---
+
+## What Bad Changes Look Like
+
+Avoid changes that:
+- introduce feature creep without clear value
+- add backend/cloud complexity
+- create enterprise-style abstractions for a small app
+- make the product feel louder, gamified, or more corporate
+- add unnecessary dependencies
+- add auth, accounts, or social mechanics by default
+- convert the app into a metrics-heavy dashboard
+
+Examples of bad changes:
+- adding badges, streak pressure, or rewards
+- introducing global architecture layers “just in case”
+- adding notifications as a default growth mechanic
+- adding AI features without strong product justification
+- rewriting stable parts of the app for stylistic reasons only
+
+---
+
+## Product Guardrails
+
+All agents must preserve these traits:
+
+### Visual
+- calm
+- premium
+- restrained
+- editorial
+- spacious
+- minimal without feeling empty
+
+### UX
+- low friction
+- emotionally safe
+- non-judgmental
+- clear
+- quiet
+- not manipulative
+
+### Technical
+- local-first
+- explicit types
+- readable structure
+- simple persistence
+- maintainable feature boundaries
+- minimal unnecessary dependencies
+
+---
+
+## Architecture Guidance
+
+Preferred structure:
+
+- `src/app` for app shell, layout, routing, app wiring
+- `src/pages` for route-level screens
+- `src/features/*` for feature-specific logic and UI
+- `src/components/ui` for reusable UI primitives
+- `src/lib` for storage, selectors, shared helpers, formatting, demo data, and utility code
+
+Guidelines:
+- keep feature-specific logic in the feature
+- do not move everything into `lib` without reason
+- create shared helpers only when duplication is real
+- do not create deep abstraction layers for a small app
+
+---
+
+## Styling Guidance
+
+The design system should stay coherent across the app.
+
+Agents should preserve:
+- neutral zinc / stone direction
+- premium soft surfaces
+- strong spacing rhythm
+- clear typography hierarchy
+- subtle motion only where useful
+- consistency in buttons, cards, borders, and helper text
+
+Avoid:
+- bright accent overload
+- noisy gradients
+- cluttered cards
+- aggressive motion
+- generic SaaS-style UI inflation
+
+---
+
+## Copy Guidance
+
+Product copy should feel:
+- calm
+- clear
+- intentional
+- emotionally mature
+- concise
+
+Avoid:
+- hype language
+- startup clichés
+- motivational clichés
+- guilt-based language
+- preachy self-help tone
 
 Good examples:
-
-- "Sit with it."
-- "Notice the urge. Do not obey it immediately."
-- "Quiet minutes count too."
-- "You stayed present longer today."
+- “Notice the urge.”
+- “Return to stillness.”
+- “Today’s reflection”
+- “Load sample data”
 
 Bad examples:
-
-- "Crush your productivity goals!"
-- "Unlock ultimate performance mode!"
-- "Become unstoppable in 7 days!"
-
-### UI Guardrails
-
-- Prefer neutral backgrounds and restrained accents
-- Avoid cluttered cards and too many competing panels
-- Keep page density low
-- Use animation to soften transitions, not to impress
-- Charts should support reflection, not performance anxiety
+- “Crush your habits”
+- “Unlock your best self”
+- “Stay on your streak”
+- “Level up your productivity”
 
 ---
 
-## 3. Prompt Engineer Agent ("Danny")
+## Change Threshold
 
-### Role
+### Safe to do without much hesitation
+- bug fixes
+- small UI consistency improvements
+- docs cleanup
+- metadata cleanup
+- test additions for current logic
+- local accessibility improvements
+- PWA/path/config fixes
 
-Refine vague user instructions into a precise prompt Antigravity can execute safely and well.
+### Requires more caution
+- large route rewrites
+- state model changes
+- persistence schema changes
+- new dependencies
+- structure-wide refactors
+- changes that affect multiple core flows
 
-### When to Use
-
-Use Danny when the user:
-
-- mixes multiple goals in one request
-- knows the vibe they want but not how to specify it
-- wants a better build prompt for Antigravity
-- wants to transform rough ideas into implementation-ready prompts
-
-### Danny Workflow
-
-When invoked:
-
-1. Clarify up to 3 things only:
-   - core goal
-   - scope boundaries
-   - desired output format
-
-2. Produce a refined prompt using this structure:
-
-- Goal
-- Product context
-- Constraints
-- Files to read first
-- Files likely to change
-- Expected output
-- Step-by-step execution mode
-
-3. Prefer prompts that:
-   - ask Antigravity to inspect the current code first
-   - request an implementation plan before coding
-   - explicitly preserve design and architecture consistency
-
-4. Do not start coding unless the user asks.
+For larger changes, produce a plan first.
 
 ---
 
-## 4. Refactor Agent
+## Docs Synchronization Rule
 
-### Role
+If implementation changes any of the following, agents should update docs where appropriate:
+- product scope
+- feature set
+- architecture assumptions
+- install/build workflow
+- root metadata or repo presentation
 
-Perform safe refactors without changing intended behavior.
-
-### Rules
-
-- Never mix refactoring with unrelated feature work
-- Name the refactor goal explicitly
-- Preserve public APIs unless instructed otherwise
-- Add regression coverage if behavior is fragile
-- Keep diffs small and explain risky areas
-
----
-
-## 5. Debug Agent
-
-### Role
-
-Diagnose bugs methodically and explain them in plain language.
-
-### Workflow
-
-1. Restate the bug clearly
-2. Identify likely root causes
-3. Point to exact files / functions to inspect
-4. Suggest the smallest viable fix first
-5. Add regression tests
-6. Update `memory.md`
+Especially keep these aligned:
+- `README.md`
+- `context.md`
+- `memory.md`
+- `specs.md`
 
 ---
 
-## 6. Non-Negotiable Constraints For All Agents
+## Final Principle
 
-- Do not introduce a backend for v1 unless explicitly requested
-- Do not add authentication in the first milestone
-- Do not add external AI APIs in the first milestone
-- Do not convert the product into a generic SaaS dashboard
-- Do not add excessive dependencies for small problems
-- Do not replace the calm tone with high-energy product language
-- Do not write huge components when a feature can be split cleanly
+Boredom Gym should feel like a finished, intentional small product.
 
----
+Agents should optimize for:
+- calm quality
+- strong taste
+- simple architecture
+- truthful documentation
+- shippable polish
 
-## 7. Default Build Mode For This Workspace
-
-Unless the user says otherwise, use this mode:
-
-1. Read project docs
-2. Inspect relevant code
-3. Summarize current state
-4. Propose a concise plan
-5. Wait if the change is broad
-6. Implement in small steps
-7. Validate
-8. Update `memory.md`
-9. Recommend the next best increment
+When in doubt, choose the smaller, clearer, calmer option.
