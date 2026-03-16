@@ -1,0 +1,201 @@
+@import "tailwindcss";
+
+:root {
+  /* Nuanced Quiet Palette (Stone/Zinc Mix) */
+  --bg-primary: #fcfcfc;
+  --bg-secondary: #f4f4f5;
+  --surface-glass: rgba(255, 255, 255, 0.7);
+  
+  --text-primary: #1c1c1e;
+  --text-secondary: #52525b;
+  --text-muted: #a1a1aa;
+  
+  --border-subtle: rgba(24, 24, 27, 0.04);
+  --accent: #18181b;
+  
+  /* Precision Spacing */
+  --space-unit: 4px;
+  --space-4: calc(var(--space-unit) * 4);
+  --space-8: calc(var(--space-unit) * 8);
+  --space-12: calc(var(--space-unit) * 12);
+  --space-24: calc(var(--space-unit) * 24);
+  
+  /* Shadows - Layered & Natural */
+  --shadow-premium: 
+    0 1px 2px rgba(0, 0, 0, 0.01),
+    0 4px 12px rgba(0, 0, 0, 0.02),
+    0 12px 32px rgba(0, 0, 0, 0.04);
+    
+  --blur-md: 12px;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, system-ui, sans-serif;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  line-height: 1.6;
+  font-feature-settings: "cv02", "cv03", "cv04", "ss01";
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(244, 244, 245, 0.4) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(244, 244, 245, 0.4) 0px, transparent 50%);
+}
+
+/* Editorial Typography */
+h1, h2, h3, h4 {
+  font-weight: 550;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+}
+
+p { font-weight: 400; }
+
+.text-editorial {
+  letter-spacing: -0.01em;
+  font-weight: 300;
+}
+
+/* Floating Surfaces & Glassmorphism */
+.glass-panel {
+  background: var(--surface-glass);
+  backdrop-filter: blur(var(--blur-md));
+  -webkit-backdrop-filter: blur(var(--blur-md));
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: var(--shadow-premium);
+}
+
+.surface-elevated {
+  background: white;
+  box-shadow: var(--shadow-premium);
+  border: 1px solid var(--border-subtle);
+}
+
+/* Interactive Elements */
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 99px;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.btn-secondary {
+  padding: 12px 24px;
+  border-radius: 99px;
+  border: 1px solid var(--border-subtle);
+  background: white;
+  color: var(--text-primary);
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.btn-secondary:hover {
+  background: var(--bg-secondary);
+  border-color: var(--text-muted);
+}
+
+/* Layout Helpers */
+.max-w-prose-bg { max-width: 680px; }
+
+/* Weightless Transitions */
+.page-enter {
+  animation: fadeSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Custom Scrollbar - Minimal */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { 
+  background: var(--text-muted); 
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--text-secondary); }
+
+/* Shared Premium UI Utilities */
+.card-premium {
+  background: white;
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-premium);
+  border-radius: 32px;
+  padding: 32px;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.input-premium {
+  width: 100%;
+  padding: 16px 24px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: 20px;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--text-primary);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.input-premium:focus {
+  outline: none;
+  background: white;
+  border-color: var(--text-muted);
+  box-shadow: 0 0 0 4px rgba(24, 24, 27, 0.03);
+}
+
+.btn-premium-dark {
+  background: var(--accent);
+  color: white;
+  padding: 16px 32px;
+  border-radius: 20px;
+  font-weight: 550;
+  letter-spacing: 0.02em;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-premium-dark:hover {
+  transform: translateY(-2px);
+  background: black;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.btn-premium-light {
+  background: white;
+  color: var(--text-primary);
+  padding: 14px 28px;
+  border-radius: 20px;
+  border: 1px solid var(--border-subtle);
+  font-weight: 550;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-premium-light:hover {
+  background: var(--bg-secondary);
+  border-color: var(--text-muted);
+}
+
+/* Tailwind Bridge - preserving necessary utils but with our variables */
+.p-8 { padding: var(--space-8); }
+.p-12 { padding: var(--space-12); }
+.space-y-16 > * + * { margin-top: var(--space-16); }
+.rounded-3xl { border-radius: 24px; }
+.rounded-4xl { border-radius: 32px; }
